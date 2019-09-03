@@ -101,4 +101,34 @@ to run containers and specify their env variables
 
 `docker inspect blissful_hopper` - you can see your environmental variables if it is not specified.
 
-### DOCKER LABS
+### DOCKER IMAGES
+
+#### How to Create your Own Image
+
+SEE DockerFile to see how a docker file is supposed to look like.
+
+then run `docker build Dockerfile -t <creator/imagename>` on your terminal `-t` is the tag of the image
+
+If you want to push it to the docker hub simply run the command `docker push <creator/imagename>`
+
+### DOCKERFILE
+
+Dockerfile includes INSTRUCTION and arguments
+
+1. Start with a base OS `FROM Ubuntu`
+2. `RUN` installs all dependencies.
+3. `COPY` will copy all the source code.
+4. `ENTRYPOINT` will specify what will be run after all is complete
+
+### Docker CMD vs Entrypoint
+
+Unlike VM's... Containers are not supposed to hold OS. They are simply to just run and do a set of instructions and exits when it is done.
+
+#### APPENDING COMMANDS
+
+`docker run ubuntu [command]`
+
+```
+FROM Ubuntu
+CMD sleep 5
+```
