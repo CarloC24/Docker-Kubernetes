@@ -126,9 +126,35 @@ Unlike VM's... Containers are not supposed to hold OS. They are simply to just r
 
 #### APPENDING COMMANDS
 
-`docker run ubuntu [command]`
+`docker run ubuntu sleep 5`
+
+===
 
 ```
 FROM Ubuntu
 CMD sleep 5
 ```
+CMD command param1 CMD Sleep 5
+CMD ["command","param1"] CMD ["sleep","5"]
+` docker build -t ubuntu-sleeper .`
+` docker run ubuntu-sleeper `
+
+#### Entrypoint Instruction
+```
+FROM ubuntu
+
+ENTRYPOINT ["sleep"]
+```
+you can now append 10 to be sleep 10
+
+### Docker networking
+Docker has three networks `Bridge` &`none` & `host`.
+
+`Bridge` - `docker run Ubuntu`
+`none` - `docker run Ubuntu --network=none`
+`host` - `docker run ubuntu --network=host`
+
+`Bridges` default on 172.17.0.1 if you want to create another bridge you can run `docker network create \
+        --driver bridge \
+        --subnet 182.18.0.0/16
+        <custom-isolate-networkname>`
